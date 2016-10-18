@@ -140,6 +140,8 @@ return [
         /*
          * Application Service Providers...
          */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        CodeDelivery\Providers\RepositoryServiceProvider::class,
         CodeDelivery\Providers\AppServiceProvider::class,
         CodeDelivery\Providers\AuthServiceProvider::class,
         CodeDelivery\Providers\EventServiceProvider::class,
