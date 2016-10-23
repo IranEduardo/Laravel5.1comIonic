@@ -137,10 +137,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
         /*
          * Application Service Providers...
          */
-        Prettus\Repository\Providers\RepositoryServiceProvider::class,
         CodeDelivery\Providers\RepositoryServiceProvider::class,
         CodeDelivery\Providers\AppServiceProvider::class,
         CodeDelivery\Providers\AuthServiceProvider::class,
