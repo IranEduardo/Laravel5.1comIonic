@@ -24,6 +24,7 @@
                          {{$category->name}}
                       </td>
                       <td>
+                          <a href="{{ route('admin.categories.edit',['id' => $category->id]) }}">Editar</a>
                       </td>
                    </tr>
                 @endforeach

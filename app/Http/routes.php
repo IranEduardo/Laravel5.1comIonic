@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::get('admin/categories',['as' => 'admin.categories.index', 'uses' => 'CategoryController@index']);
 Route::get('admin/categories/create',['as' => 'admin.categories.create', 'uses' => 'CategoryController@create']);
+Route::post('admin/categories/store',['as' => 'admin.categories.store', 'uses' => 'CategoryController@store']);
+Route::get('admin/categories/edit/{id}',['as' => 'admin.categories.edit', 'uses' => 'CategoryController@edit']);
+Route::post('admin/categories/update/{id}',['as' => 'admin.categories.update', 'uses' => 'CategoryController@update']);
