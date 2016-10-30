@@ -6,7 +6,7 @@ use CodeDelivery\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use CodeDelivery\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
 
     protected $repository;

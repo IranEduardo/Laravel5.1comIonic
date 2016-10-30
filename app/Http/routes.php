@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/categories',['as' => 'admin.categories.index', 'uses' => 'CategoryController@index']);
-Route::get('admin/categories/create',['as' => 'admin.categories.create', 'uses' => 'CategoryController@create']);
-Route::post('admin/categories/store',['as' => 'admin.categories.store', 'uses' => 'CategoryController@store']);
-Route::get('admin/categories/edit/{id}',['as' => 'admin.categories.edit', 'uses' => 'CategoryController@edit']);
-Route::post('admin/categories/update/{id}',['as' => 'admin.categories.update', 'uses' => 'CategoryController@update']);
+Route::get('admin/categories',['as' => 'admin.categories.index', 'uses' => 'CategoriesController@index']);
+Route::get('admin/categories/create',['as' => 'admin.categories.create', 'uses' => 'CategoriesController@create']);
+Route::post('admin/categories/store',['as' => 'admin.categories.store', 'uses' => 'CategoriesController@store']);
+Route::get('admin/categories/edit/{id}',['as' => 'admin.categories.edit', 'uses' => 'CategoriesController@edit']);
+Route::post('admin/categories/update/{id}',['as' => 'admin.categories.update', 'uses' => 'CategoriesController@update']);
+
+Route::get('admin/orders',['as' => 'admin.orders.index', 'uses' => 'OrdersController@index']);
+Route::get('admin/orders/show/{$id}',['as' => 'admin.orders.show', 'uses' => 'OrdersController@show']);
