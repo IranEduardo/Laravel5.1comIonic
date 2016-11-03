@@ -17,6 +17,26 @@ class Order extends Model implements Transformable
         'status'
     ];
 
+    private $statuslist = [
+         'Aguardando pagamento',
+         'Pagamento não confirado',
+         'Pagamento confirmado',
+         'Pedido enviado',
+         'Recebido',
+         'Devolvido',
+         'Cancelado pelo comprador',
+         'Cancelado pelo logista'
+    ];
+
+    /**
+     * @return array
+     */
+    public function getStatuslist()
+    {
+        return $this->statuslist;
+    }
+
+
     public function items() {
         return $this->hasMany(OrderItem::class);
     }
@@ -26,7 +46,7 @@ class Order extends Model implements Transformable
     }
 
     public function deliveryman() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_deliveryman_id','id');
     }
 
 }

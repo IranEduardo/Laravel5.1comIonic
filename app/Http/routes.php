@@ -22,4 +22,5 @@ Route::get('admin/categories/edit/{id}',['as' => 'admin.categories.edit', 'uses'
 Route::post('admin/categories/update/{id}',['as' => 'admin.categories.update', 'uses' => 'CategoriesController@update']);
 
 Route::get('admin/orders',['as' => 'admin.orders.index', 'uses' => 'OrdersController@index']);
-Route::get('admin/orders/show/{$id}',['as' => 'admin.orders.show', 'uses' => 'OrdersController@show']);
+Route::get('admin/orders/show/{id}',['as' => 'admin.orders.show', 'uses' => 'OrdersController@show']);
+Route::post('admin/orders/update/{id}',['as' => 'admin.orders.update', 'uses' => 'OrdersController@update']);

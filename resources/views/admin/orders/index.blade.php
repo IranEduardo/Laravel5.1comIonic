@@ -12,10 +12,10 @@
                         ID
                     </div>
                     <div class="col-sm-3">
-                        Client
+                        Cliente
                     </div>
                     <div class="col-sm-3">
-                        Deliveryman
+                        Entregador
                     </div>
                     <div class="col-sm-2" align="right">
                         Total
@@ -24,7 +24,7 @@
                         Status
                     </div>
                     <div>
-                        Actions
+                        Ações
                     </div>
                 </div>
                 @foreach($orders as $order)
@@ -36,7 +36,7 @@
                             {{$order->client->user->name}}
                         </div>
                         <div class="col-sm-3">
-                            {{$order->deliveryman ? $order->deliveryman->name : 'Nao tem' }}
+                            {{$order->deliveryman ? $order->deliveryman->name : '' }}
                         </div>
                         <div class="col-sm-2" align="right">
                             {{$order->total}}
@@ -45,7 +45,7 @@
                             {{$order->status}}
                         </div>
                         <div>
-                            View Order
+                            <a href="{{route('admin.orders.show',['id' => $order->id])}}">View Order</a>
                         </div>
                     </div>
                @endforeach

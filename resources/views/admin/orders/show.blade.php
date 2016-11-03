@@ -5,49 +5,34 @@
          <h3>Orders</h3>
         <br>
         <div class="row">
-            <div class="col-sm-12">
-                <p class="bg-primary">Orders List</p>
-                <div class="row">
-                    <div class="col-sm-1">
-                        Product
-                    </div>
-                    <div class="col-sm-3">
-                        Qtde
-                    </div>
-                    <div class="col-sm-3">
-                        Prince
-                    </div>
-                    <div class="col-sm-2" align="right">
-                        Total
-                    </div>
-                    <div>
-                        Actions
-                    </div>
-                </div>
-                @foreach($orders as $order)
-                    <div class="row">
-                        <div class="col-sm-1">
-                            {{$order->id}}
-                        </div>
-                        <div class="col-sm-3">
-                            {{$order->client->user->name}}
-                        </div>
-                        <div class="col-sm-3">
-                            {{!($order->deliveryman) ? $order->deliveryman->name : 'Nao tem' }}
-                        </div>
-                        <div class="col-sm-2" align="right">
-                            {{$order->total}}
-                        </div>
-                        <div class="col-sm-2">
-                            {{$order->status}}
-                        </div>
-                        <div>
-                            View Order
-                        </div>
-                    </div>
-               @endforeach
-               {!! $orders->render() !!}
+            <div class="col-sm-2">
+                Pedido: {{$order->id}}
             </div>
+            <div class="col-sm-2">
+                Data: {{ $order->created_at->format('d/m/y') }}
+            </div>
+            <div class="col-sm-5">
+                Cliente: {{ $order->client->user->name }}
+            </div>
+            <div class="col-sm-2">
+                Total: {{ number_format($order->total,2) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            {!! Form::model($order, ['route' => ['admin.orders.update', $order->id], 'class' => 'form-inline']) !!}
+               <div class="col-sm-4">
+                   {!! Form::label('user_deliveryman_id', 'Entregador:') !!}
+                   {!! Form::select('user_deliveryman_id', $deliverymen , null, ['class' => 'form-control']) !!}
+               </div>
+               <div class="col-sm-4">
+                    {!! Form::label('status', 'Status:') !!}
+                    {!! Form::select('status', $order->getStatuslist() , null, ['class' => 'form-control']) !!}
+               </div>
+               <div class="col-sm-5">
+                 {!!  Form::submit('Salvar',['class' => 'btn btn-primary']) !!}
+               </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection

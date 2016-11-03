@@ -30,7 +30,7 @@ $factory->define(CodeDelivery\Models\Product::class, function (Faker\Generator $
     return [
         'name' => $faker->word,
         'description' => $faker->sentence,
-        'price'       => $faker->numberBetween(10,50)
+        'price'       => $faker->randomFloat(2,1,1000)
     ];
 });
 
@@ -48,14 +48,14 @@ $factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $fa
     return [
             'client_id'           => $faker->optional($weight = 0.75, $default = 1)->numberBetween(1,10), //25% chance of default value 1
             'user_deliveryman_id' => $faker->optional($weight = 0.60)->numberBetween(1,10), //40% chance of default value NULL
-            'total'               => $faker->numberBetween(1,1000),
+            'total'               => $faker->randomFloat(2,1,1000),
             'status'              => $faker->numberBetween(0,4)
     ];
 });
 
 $factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) {
     return [
-          'price' => $faker->numberBetween(1,1000),
+          'price' => $faker->randomFloat(2,1,1000),
           'qtde'  => $faker->numberBetween(1,10),
           'product_id' => $faker->numberBetween(1,10)
     ];
