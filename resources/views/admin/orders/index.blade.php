@@ -2,55 +2,65 @@
 
 @section('content')
     <div class="container">
-         <h3>Orders</h3>
-        <br>
         <div class="row">
-            <div class="col-sm-12">
-                <p class="bg-primary">Orders List</p>
-                <div class="row">
-                    <div class="col-sm-1">
-                        ID
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Lista de Pedidos</h3>
                     </div>
-                    <div class="col-sm-3">
-                        Cliente
-                    </div>
-                    <div class="col-sm-3">
-                        Entregador
-                    </div>
-                    <div class="col-sm-2" align="right">
-                        Total
-                    </div>
-                    <div class="col-sm-2">
-                        Status
-                    </div>
-                    <div>
-                        Ações
+                    <div class="painel-body">
+                        <table class="table table-condensed">
+                            <thead>
+                              <tr>
+                                  <th>
+                                    ID
+                                 </th>
+                                 <th>
+                                    Cliente
+                                </th>
+                                <th>
+                                    Entregador
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Ações
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td>
+                                            {{$order->id}}
+                                        </td>
+                                        <td>
+                                            {{$order->client->user->name}}
+                                        </td>
+                                        <td>
+                                            {{$order->deliveryman ? $order->deliveryman->name : '' }}
+                                        </td>
+                                        <td>
+                                            {{number_format($order->total,2) }}
+                                        </td>
+                                        <td>
+                                            {{$order->getStatusList()[$order->status]}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.orders.show',['id' => $order->id])}}" class="btn btn-default">Detalhes Pedido</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                @foreach($orders as $order)
-                    <div class="row">
-                        <div class="col-sm-1">
-                            {{$order->id}}
-                        </div>
-                        <div class="col-sm-3">
-                            {{$order->client->user->name}}
-                        </div>
-                        <div class="col-sm-3">
-                            {{$order->deliveryman ? $order->deliveryman->name : '' }}
-                        </div>
-                        <div class="col-sm-2" align="right">
-                            {{$order->total}}
-                        </div>
-                        <div class="col-sm-2">
-                            {{$order->status}}
-                        </div>
-                        <div>
-                            <a href="{{route('admin.orders.show',['id' => $order->id])}}">View Order</a>
-                        </div>
-                    </div>
-               @endforeach
-               {!! $orders->render() !!}
-            </div>
+        </div>
+        <div class="row text-center">
+              {!! $orders->render() !!}
         </div>
     </div>
 @endsection

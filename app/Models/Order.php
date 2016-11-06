@@ -19,7 +19,7 @@ class Order extends Model implements Transformable
 
     private $statuslist = [
          'Aguardando pagamento',
-         'Pagamento não confirado',
+         'Pagamento não confirmado',
          'Pagamento confirmado',
          'Pedido enviado',
          'Recebido',

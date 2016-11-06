@@ -31,7 +31,7 @@ class OrdersController extends Controller
         $order = $this->repository->find($id);
         $deliverymen =  $this->repositoryUser->all()->lists('name','id');
         $deliverymen = $deliverymen->toArray();
-        array_unshift($deliverymen, '--Selecione um entregador--');
+        array_unshift($deliverymen, '--Nenhum Entregador--');
         return view('admin.orders.show', compact('order','deliverymen'));
     }
 

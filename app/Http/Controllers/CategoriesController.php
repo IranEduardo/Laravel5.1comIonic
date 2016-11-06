@@ -2,8 +2,8 @@
 
 namespace CodeDelivery\Http\Controllers;
 
+use CodeDelivery\Http\Requests\AdminCategoryRequest;
 use CodeDelivery\Repositories\CategoryRepository;
-use Illuminate\Http\Request;
 use CodeDelivery\Http\Controllers\Controller;
 
 class CategoriesController extends Controller
@@ -31,7 +31,7 @@ class CategoriesController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(Request $request)
+    public function store(AdminCategoryRequest $request)
     {
         $this->repository->create($request->all());
         return redirect()->route('admin.categories.index');
@@ -43,7 +43,7 @@ class CategoriesController extends Controller
         return view('admin.categories.edit',compact('category'));
     }
 
-    public function update(Request $request,$id)
+    public function update(AdminCategoryRequest $request,$id)
     {
         $this->repository->update($request->all(),$id);
         return redirect()->route('admin.categories.index');

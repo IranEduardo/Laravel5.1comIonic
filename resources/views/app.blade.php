@@ -35,7 +35,15 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Welcome</a></li>
 				</ul>
-
+				<ul class="nav navbar-nav">
+					<li><a href="{{ route('admin.categories.index') }}">Categories</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="{{ route('admin.clients.index') }}">Clientes</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())
 						@if(!Request::is('auth/login'))
