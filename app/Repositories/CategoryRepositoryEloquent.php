@@ -24,7 +24,11 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return Category::class;
     }
 
-    
+    public function listsAll()
+    {
+        return $this->model->lists('name','id');
+    }
+
 
     /**
      * Boot up the repository, pushing criteria

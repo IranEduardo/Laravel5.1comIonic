@@ -42,9 +42,12 @@
 					<li><a href="{{ route('admin.clients.index') }}">Clientes</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
+					<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
 					<li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
+	     		<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())
 						@if(!Request::is('auth/login'))
 							<li><a href="{{ url('/auth/login') }}">Login</a></li>

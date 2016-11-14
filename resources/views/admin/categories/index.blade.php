@@ -24,7 +24,9 @@
                          {{$category->name}}
                       </td>
                       <td>
-                          <a href="{{ route('admin.categories.edit',['id' => $category->id]) }}">Editar</a>
+                          <a href="{{ route('admin.categories.edit',['id' => $category->id]) }}" class="btn btn-default btn-sm">Editar</a>
+                          <a href="{{ route('admin.categories.destroy',['id' => $category->id]) }}" class="btn btn-default btn-sm">Excluir</a>
+
                       </td>
                    </tr>
                 @endforeach

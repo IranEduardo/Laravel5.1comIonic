@@ -24,7 +24,8 @@ class AdminProductRequest extends Request
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:2',
+            'description' => 'required|min:2'
         ];
     }
 }

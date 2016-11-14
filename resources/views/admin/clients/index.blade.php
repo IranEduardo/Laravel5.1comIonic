@@ -44,7 +44,8 @@
                            {{$client->state}}
                        </td>
                        <td>
-                          <a href="{{ route('admin.clients.edit',['id' => $client->id]) }}">Editar</a>
+                          <a href="{{ route('admin.clients.edit',['id' => $client->id]) }}" class="btn btn-default btn-sm">Editar</a>
+                           <a href="{{ route('admin.clients.destroy',['id' => $client->id]) }}" class="btn btn-default btn-sm">Excluir</a>
                       </td>
                    </tr>
                 @endforeach
