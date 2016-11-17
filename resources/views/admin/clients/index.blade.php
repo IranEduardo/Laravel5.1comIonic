@@ -11,6 +11,7 @@
              <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Email</th>
                 <th>Telefone</th>
                 <th>Endereço</th>
                 <th>CEP</th>
@@ -23,11 +24,14 @@
                @foreach($clients as $client)
                    <tr>
                       <td>
-                        {{$client->id}}
+                           {{$client->id}}
                       </td>
                       <td>
-                         {{$client->user->name}}
-                      </td>
+                           {{$client->user->name}}
+                       </td>
+                       <td>
+                           {{$client->user->email}}
+                       </td>
                        <td>
                            {{$client->phone}}
                        </td>
