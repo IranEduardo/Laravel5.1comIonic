@@ -3,6 +3,7 @@
 namespace CodeDelivery\Http\Requests;
 
 use CodeDelivery\Http\Requests\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminClientRequest extends Request
 {
@@ -23,12 +24,19 @@ class AdminClientRequest extends Request
      */
     public function rules()
     {
+        $userId = $this->input('userID');
+        $email_validation = 'required|email|unique:users,email';
+        if (isset($userId))
+            $email_validation = 'required|email|unique:users,email,' . $userId;
+
         return [
-            'phone'   => 'required',
-            'address' => 'required',
-            'city'    => 'required',
-            'state'   => 'required',
-            'zipcode' => 'required'
+            'user.email'   => $email_validation,
+            'user.name'    => 'required|min:3',
+            'phone'        => 'required|min:3',
+            'address'      => 'required|min:3',
+            'city'         => 'required',
+            'state'        => 'required',
+            'zipcode'      => 'required',
         ];
     }
 }
