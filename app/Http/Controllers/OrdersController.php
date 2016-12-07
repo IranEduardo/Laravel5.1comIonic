@@ -29,9 +29,9 @@ class OrdersController extends Controller
     public function show($id)
     {
         $order = $this->repository->find($id);
-        $deliverymen =  $this->repositoryUser->all()->lists('name','id');
+        $deliverymen =  $this->repositoryUser->findWhere(['role' => 'deliveryman'])->lists('name','id');
         $deliverymen = $deliverymen->toArray();
-        array_unshift($deliverymen, '--Nenhum Entregador--');
+        $deliverymen = ['--Nenhum Entregador--'] + $deliverymen;
         return view('admin.orders.show', compact('order','deliverymen'));
     }
 

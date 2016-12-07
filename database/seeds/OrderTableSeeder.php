@@ -4,9 +4,6 @@ use Illuminate\Database\Seeder;
 
 use CodeDelivery\Models\Order;
 use CodeDelivery\Models\OrderItem;
-use CodeDelivery\Models\Client;
-use CodeDelivery\Models\User;
-use CodeDelivery\Models\Product;
 
 
 class OrderTableSeeder extends Seeder
