@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -51,4 +52,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
 
 
 });
+
+Route::group(['prefix' => 'customer', 'as' => 'customer.'], function(){
+
+    Route::get('orders/create',['as' => 'orders.create', 'uses' => 'CheckoutController@create']);
+    Route::post('orders/store',['as' => 'orders.store', 'uses' => 'CheckoutController@store']);
+
+});
+
 
