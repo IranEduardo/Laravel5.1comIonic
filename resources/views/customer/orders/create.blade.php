@@ -4,7 +4,16 @@
    <div class="container">
        <h3>Novo Pedido</h3>
 
-       <a href="#" class="btn btn-default" id="NovoItem">Novo Item</a>
+       <a href="#" class="btn btn-default" id="btnNewItem">Novo Item</a>
+
+       <br>
+       <br>
+       <br>
+       <span style="font-size:20">Total R$: <span id="totalOrder" ></span></span>
+
+       <br>
+       <br>
+       <br>
 
         {!! Form::open(['route' => 'customer.orders.store', 'class' => 'form']) !!}
 
@@ -45,14 +54,33 @@
 
 @section('post-script')
     <script>
-            $("#NovoItem").on("click",function() {
+            $("#btnNewItem").on("click",function() {
                 var trList = $("table tbody tr"),
                     trLen = trList.length,
                     trClone = trList.eq(0).clone();
                 trClone.insertAfter(trList.eq(trLen - 1));
                 trClone.find('select,input').attr("name", function(i,value){
-                    return value.replace('items[0]','items[' + trLen + ']');
+                    return value.replace('0',trLen);
                 });
+                trClone.find('input').val(1);
             });
+
+            function CalculateTotal(){
+                var trList = $("table tbody tr"),
+                    Total = 0;
+                trList.each(function(){
+                    var price =  $(this).find(":selected").data("price"),
+                        qtde  =  $(this).find("input").val();
+
+                    Total += price * qtde;
+                });
+
+                return Total;
+            }
+
+            $("table tbody").on("change",'select,input',function(){
+                $("#totalOrder").text(CalculateTotal());
+            });
+
     </script>
 @endsection
