@@ -57,12 +57,15 @@
             $("#btnNewItem").on("click",function() {
                 var trList = $("table tbody tr"),
                     trLen = trList.length,
-                    trClone = trList.eq(0).clone();
-                trClone.insertAfter(trList.eq(trLen - 1));
+                    lastLine = trList.eq(trLen - 1),
+                    trClone = lastLine.clone();
+                trClone.insertAfter(lastLine);
+                trLen = trList.length;
                 trClone.find('select,input').attr("name", function(i,value){
-                    return value.replace('0',trLen);
+                    return value.replace(trLen - 1,trLen);
                 });
                 trClone.find('input').val(1);
+                $("#totalOrder").text(CalculateTotal());
             });
 
             function CalculateTotal(){
@@ -78,9 +81,11 @@
                 return Total;
             }
 
-            $("table tbody").on("change",'select,input',function(){
+            $("table tbody").on("change","select",function(){
                 $("#totalOrder").text(CalculateTotal());
             });
-
-    </script>
+            $("table tbody").on("blur","input",function(){
+                $("#totalOrder").text(CalculateTotal());
+            });
+     </script>
 @endsection
