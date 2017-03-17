@@ -47,6 +47,10 @@
                  </tbody>
             </table>
 
+            <div class="form-group">
+                {!! Form::submit('Criar Pedido',['class' => 'btn btn-primary']) !!}
+            </div>
+
         {!! Form::close() !!}
 
    </div>

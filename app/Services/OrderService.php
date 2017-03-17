@@ -53,7 +53,7 @@ class OrderService
             foreach($items as $item) {
                 $item['price'] = $this->productRepository->find($item['product_id'])->price;
                 $order->items()->create($item);
-                $total += $item['price'] + $item['qtd'];
+                $total += $item['price'] * $item['qtde'];
             }
 
             $order->total = $total;

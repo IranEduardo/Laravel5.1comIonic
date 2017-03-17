@@ -15,16 +15,16 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if (!Auth::check()) {
-           return redirect('/auth/login');
-        }
+      public function handle($request, closure $next, $role) //aqui adicionamos um parametro para o middleware
+      {
 
-        if (Auth::user()->role <> 'admin') {
-            return redirect('/home');
-        }
+          if (!Auth::check()) {
+              return redirect('/auth/login');
+          }
 
-        return $next($request);
-    }
+          if (Auth::user()->role <> $role) { //se a role do usuário autenticado bate com a $role que passamos
+                return redirect('/auth/login');
+          }
+            return $next($request);
+      }
 }

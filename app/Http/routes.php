@@ -12,11 +12,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view('app');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole'], function(){
+Route::get('/', function () {
+    return view('app');
+});
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole:admin'], function(){
 
     Route::get('categories',['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
     Route::get('categories/create',['as' => 'categories.create', 'uses' => 'CategoriesController@create']);
@@ -53,11 +57,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
 
 });
 
-Route::group(['prefix' => 'customer', 'as' => 'customer.'], function(){
+Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => 'auth.checkrole:client'], function(){
 
+    Route::get('orders',['as' => 'orders.index', 'uses' => 'CheckoutController@index']);
     Route::get('orders/create',['as' => 'orders.create', 'uses' => 'CheckoutController@create']);
-    Route::post('orders/store',['as' => 'orders.store', 'uses' => 'CheckoutController@store']);
+    Route::post('ordess/store',['as' => 'orders.store', 'uses' => 'CheckoutController@store']);
 
 });
-
 
