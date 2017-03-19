@@ -65,3 +65,19 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => 'auth
 
 });
 
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+
+Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function(){
+
+    Route::get('teste', function(){
+
+        return [
+           'id' => 1,
+            'client' => 'Jose das Quebradas'
+        ];
+
+    });
+});
+
