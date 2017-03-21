@@ -29,7 +29,15 @@ class UserTableSeeder extends Seeder
             'remember_token' => str_random(10)
         ]);
 
-        factory(User::class,5)->create([
+        factory(User::class)->create([
+            'name' => 'Deliveryman',
+            'email' => 'deliveryman@user.com',
+            'password' => bcrypt('123456'),
+            'role'     => 'deliveryman',
+            'remember_token' => str_random(10)
+        ]);
+
+        factory(User::class,4)->create([
             'role'     => 'deliveryman',
         ]);
 
