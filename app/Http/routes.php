@@ -71,27 +71,16 @@ Route::post('oauth/access_token', function() {
 
 Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function(){
 
+    Route::get('authenticated',['as' => 'user.authenticated', 'uses' => 'Api\Client\ClientCheckoutController@authenticated']);
+
     Route::group(['prefix' => 'client', 'as' => 'client.', 'middleware' => 'oauth.checkrole:client'], function(){
 
-        Route::get('pedidos',function(){
-
-            return [
-                 'id'   => 1,
-                 'name' => 'Ze pedreira Client'
-            ];
-        });
+        Route:resource('order','Api\Client\ClientCheckoutController',['except' => ['create','edit','destroy']]);
 
     });
 
     Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth.checkrole:deliveryman'], function(){
 
-        Route::get('pedidos',function(){
-
-            return [
-                'id' => 1,
-                'name' => 'Ze pedreira Deliveryman'
-            ];
-        });
 
     });
 
