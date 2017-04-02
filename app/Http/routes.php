@@ -54,7 +54,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
     Route::post('cupoms/update/{id}',['as' => 'cupoms.update', 'uses' => 'CupomsController@update']);
     Route::get('cupoms/destroy/{id}',['as' => 'cupoms.destroy', 'uses' => 'CupomsController@destroy']);
 
-
 });
 
 Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => 'auth.checkrole:client'], function(){
@@ -81,6 +80,11 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], funct
 
     Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth.checkrole:deliveryman'], function(){
 
+        Route::resource('order','Api\Deliveryman\DeliverymanCheckoutController',['except' => ['create','edit','destroy','store']]);
+        Route::patch('order/update-status/{id}', [
+              'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus',
+              'as'   => 'orders.update_status'
+        ]);
 
     });
 

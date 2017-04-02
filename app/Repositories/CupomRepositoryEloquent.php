@@ -14,7 +14,7 @@ use CodeDelivery\Validators\CupomValidator;
  */
 class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
 {
-    /**
+     /**
      * Specify Model class name
      *
      * @return string
@@ -23,8 +23,6 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
     {
         return Cupom::class;
     }
-
-    
 
     /**
      * Boot up the repository, pushing criteria
