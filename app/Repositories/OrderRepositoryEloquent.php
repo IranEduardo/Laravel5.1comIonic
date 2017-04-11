@@ -15,9 +15,11 @@ use CodeDelivery\Validators\OrderValidator;
 class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 {
 
+    protected $skipPresenter = true;
+
     public function getByIdAndDeliveryman($id, $idDeliveryman)
     {
-        $result = $this->with(['client', 'items', 'items.product', 'cupom'])->findWhere([
+        $result = $this->with(['client', 'items','items.product', 'cupom'])->findWhere([
             'id' => $id,
             'user_deliveryman_id' => $idDeliveryman
         ]);
@@ -40,5 +42,10 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\OrderPresenter::class;
     }
 }
