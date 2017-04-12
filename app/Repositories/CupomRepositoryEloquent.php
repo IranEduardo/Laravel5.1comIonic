@@ -14,6 +14,7 @@ use CodeDelivery\Validators\CupomValidator;
  */
 class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
 {
+    protected $skipPresenter = true;
      /**
      * Specify Model class name
      *

@@ -14,6 +14,7 @@ use CodeDelivery\Validators\OrderItemValidator;
  */
 class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRepository
 {
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *

@@ -14,6 +14,7 @@ use CodeDelivery\Validators\ClientValidator;
  */
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
 {
+    protected $skipPresenter = true;
     /**
      * Specify Model class name
      *

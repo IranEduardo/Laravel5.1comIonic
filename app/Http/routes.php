@@ -70,7 +70,7 @@ Route::post('oauth/access_token', function() {
 
 Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function(){
 
-    Route::get('authenticated',['as' => 'user.authenticated', 'uses' => 'Api\Client\ClientCheckoutController@authenticated']);
+    Route::get('authenticated',['as' => 'user.authenticated', 'uses' => 'Api\UserController@authenticated']);
 
     Route::group(['prefix' => 'client', 'as' => 'client.', 'middleware' => 'oauth.checkrole:client'], function(){
 
