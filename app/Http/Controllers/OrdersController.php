@@ -4,8 +4,7 @@ namespace CodeDelivery\Http\Controllers;
 
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use CodeDelivery\Http\Controllers\Controller;
+use Illuminate\http\Request;
 
 class OrdersController extends Controller
 {
@@ -22,8 +21,8 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = $this->repository->paginate();
-        return view('admin.orders.index', compact('orders'));
+        $orders = $this->repository->paginate(3);
+        return view('admin.orders.index',compact('orders'));
     }
     
     public function show($id)
@@ -37,7 +36,7 @@ class OrdersController extends Controller
 
     public function update(Request $request, $id)
     {
-        $order = $this->repository->find($id);
+       $order = $this->repository->find($id);
        $dados = $request->all();
        if ($dados['user_deliveryman_id'] == 0)
            $dados['user_deliveryman_id'] = null;

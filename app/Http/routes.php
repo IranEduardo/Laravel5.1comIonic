@@ -60,7 +60,7 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => 'auth
 
     Route::get('orders',['as' => 'orders.index', 'uses' => 'CheckoutController@index']);
     Route::get('orders/create',['as' => 'orders.create', 'uses' => 'CheckoutController@create']);
-    Route::post('ordess/store',['as' => 'orders.store', 'uses' => 'CheckoutController@store']);
+    Route::post('orders/store',['as' => 'orders.store', 'uses' => 'CheckoutController@store']);
 
 });
 

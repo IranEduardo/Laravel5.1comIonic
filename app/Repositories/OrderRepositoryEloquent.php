@@ -60,6 +60,6 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 
     public function presenter()
     {
-        return \CodeDelivery\Presenters\OrderPresenter::class;
+       return \CodeDelivery\Presenters\OrderPresenter::class;
     }
 }

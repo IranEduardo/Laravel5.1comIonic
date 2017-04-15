@@ -4,7 +4,7 @@ namespace CodeDelivery\Http\Controllers\Api\Client;
 
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
-use Illuminate\Http\Request;
+use CodeDelivery\Http\Requests\CheckoutRequest;
 use CodeDelivery\Http\Controllers\Controller;
 use CodeDelivery\Services\OrderService;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
@@ -43,7 +43,7 @@ class ClientCheckoutController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         $data = $request->all();
         $id = Authorizer::getResourceOwnerId();
@@ -63,12 +63,6 @@ class ClientCheckoutController extends Controller
              ->skipPresenter(false)
              ->with($this->with)
              ->find($id);
-    }
-
-    public function authenticated()
-    {
-        $id = Authorizer::getResourceOwnerId();
-        return $this->UserRepository->skipPresenter(false)->with('client')->find($id);
     }
 
 }

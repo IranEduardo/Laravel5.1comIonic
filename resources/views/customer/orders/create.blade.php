@@ -4,6 +4,8 @@
    <div class="container">
        <h3>Novo Pedido</h3>
 
+       @include('errors.error')
+
        <a href="#" class="btn btn-default" id="btnNewItem">Novo Item</a>
 
        <br>

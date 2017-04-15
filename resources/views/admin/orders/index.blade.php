@@ -60,7 +60,7 @@
                 </div>
         </div>
         <div class="row text-center">
-              {!! $orders->render() !!}
+            {!! $orders->render() !!}
         </div>
     </div>
 @endsection
