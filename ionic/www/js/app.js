@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', [
-    'ionic', 'angular-oauth2'
+    'ionic', 'angular-oauth2', 'starter.controllers'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,7 +23,9 @@ angular.module('starter', [
     }
   });
 })
-.config(['OAuthProvider','OAuthTokenProvider', function(OAuthProvider, OAuthTokenProvider) {
+.config([
+     'OAuthProvider','OAuthTokenProvider','$stateProvider','$urlRouterProvider',
+      function(OAuthProvider, OAuthTokenProvider, $stateProvider, $urlRouterProvider) {
 
      OAuthProvider.configure({
        baseUrl: 'http://localhost:8000',
@@ -37,6 +39,14 @@ angular.module('starter', [
           secure: false
       }
     });
+
+    $stateProvider
+        .state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+        })
+   //$urlRouterProvider.otherwise('/');
 
 }]);
 
