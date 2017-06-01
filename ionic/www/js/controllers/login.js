@@ -1,6 +1,17 @@
 angular.module('starter.controllers',[])
-   .controller('LoginCtrl',['$scope',function($scope){
+   .controller('LoginCtrl',['$scope', 'OAuth',function($scope, OAuth){
+
+        $scope.user = {
+            username: '',
+            password: ''
+        };
+
         $scope.login = function(){
-            alert('massa');
+            OAuth.getAccessToken($scope.user)
+                .then(function(data){
+                   alert('Login funcionando');
+             }, function(responseError){
+
+             });
         }
     }]);
