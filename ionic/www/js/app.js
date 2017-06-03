@@ -28,25 +28,31 @@ angular.module('starter', [
       function(OAuthProvider, OAuthTokenProvider, $stateProvider, $urlRouterProvider) {
 
      OAuthProvider.configure({
-       baseUrl: 'http://localhost:8000',
-       clientId: 'appid01',
-       clientSecret: 'secret', // optional
-       grantPath: '/oauth/access_token'
+        baseUrl: 'http://localhost:8000',
+        clientId: 'appid01',
+        clientSecret: 'secret', // optional
+        grantPath: '/oauth/access_token'
      });
 
     OAuthTokenProvider.configure({
-      name: 'token',
-      options: {
-          secure: false
-      }
+        name: 'token',
+        options: {
+           secure: false
+        }
     });
 
     $stateProvider
         .state('login', {
-            url: '/login',
-            templateUrl: 'templates/login.html',
-            controller: 'LoginCtrl'
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
         })
+        .state('home', {
+                url: '/home',
+                templateUrl: 'templates/home.html',
+                controller: 'HomeCtrl'
+        });
+
    //$urlRouterProvider.otherwise('/');
 
 }]);
