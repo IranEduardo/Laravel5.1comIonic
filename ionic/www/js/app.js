@@ -3,6 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+angular.module('starter.controllers',[]);
+
 angular.module('starter', [
     'ionic', 'angular-oauth2', 'starter.controllers'
 ])
@@ -51,9 +53,29 @@ angular.module('starter', [
                 url: '/home',
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl'
-        });
+        })
+        .state('client', {
+            abstract: true,
+            url: '/client',
+            template: '<ui-view/>'
+        })
+        .state('client.checkout', {
+            url: '/checkout',
+            templateUrl: 'templates/client/checkout.html',
+            controller: 'ClientCheckoutCtrl'
+        })
+        .state('client.checkout_item_detail', {
+            url: '/checkout/detail/:index',
+            templateUrl: 'templates/client/checkout-detail.html',
+            controller: 'ClientCheckoutDetailCtrl'
+        })
+        .state('client.view_products', {
+            url: '/view_products',
+            templateUrl: 'templates/client/view-product.html',
+            controller: 'ClientViewProductCtrl'
+        })
 
-   //$urlRouterProvider.otherwise('/');
+    //$urlRouterProvider.otherwise('/');
 
 }]);
 
